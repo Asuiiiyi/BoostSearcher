@@ -1,0 +1,36 @@
+{
+    "tasks": [
+        {
+            "type": "cppbuild",
+            "label": "C/C++: g++ 生成活动文件",
+            "command": "/usr/bin/g++",
+            "args": [
+                "-fdiagnostics-color=always",
+                "-std=c++11",
+                "-lboost_system",
+                "-lboost_filesystem",
+                "-lpthread",
+                "-ljsoncpp",
+                "-lpthread",
+                "-g",
+                "debug.cc",
+                //"parser.cc",
+                //"funtiontest.cc",
+                "-o",
+                "/home/asuiiiyi/Documents/boost_searcher/debug.out"
+            ],
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "编译器: /usr/bin/g++"
+        }
+    ],
+    "version": "2.0.0"
+}
