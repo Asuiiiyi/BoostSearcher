@@ -10,7 +10,8 @@
 
 **解析网页搜索结果的组成，这里以Microsoft Edge的搜索为例：**
 
-![image-20240611153515981](C:\Users\Asuiiiyi\AppData\Roaming\Typora\typora-user-images\image-20240611153515981.png)
+![image](https://github.com/Asuiiiyi/BoostSearcher/assets/92619263/4da926e0-0f66-4e16-a3c0-058967685319)
+
 
 **一个搜索结果主要有三个组成部分：标题、文档摘要、网址URL**
 
@@ -983,7 +984,8 @@ int main()
 
 #### 实现效果：
 
-![image-20240611165856060](C:\Users\Asuiiiyi\AppData\Roaming\Typora\typora-user-images\image-20240611165856060.png)
+![image](https://github.com/Asuiiiyi/BoostSearcher/assets/92619263/6ff7b47e-cb0e-4300-a055-7fc1cb008f30)
+
 
 
 
