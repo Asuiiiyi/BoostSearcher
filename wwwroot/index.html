@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-eqiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+
+    <title>boost 搜索引擎</title>
+    <style>
+        /*去掉默认内外边距*/
+        * {
+            margin: 0;
+            /*设置外边距*/
+            padding: 0;
+            /*设置内边距*/
+        }
+
+        /* 将我们的body的内容100%吻合 */
+        html,
+        body {
+            height: 100%;
+        }
+
+        /* 类选择器 container*/
+        .container {
+            width: 800px;
+            /* 设置div的宽度 */
+            margin: 0px auto;
+            /* 设置外边距达到居中效果 */
+            margin-top: 15px;
+            /* 设置外上边距 */
+        }
+
+        /* 复合选择器 选中container下的search*/
+        .container .search {
+            width: 100%;
+            /* 宽度与父标签保持一致 */
+            height: 52px;
+            /* 高度设置52像素点 */
+        }
+
+        /* 先选中input标签，直接设置标签的属性，input：标签选择器*/
+        .container .search input {
+            /* 设置left浮动 */
+            float: left;
+            width: 600px;
+            height: 50px;
+            border: 1px solid black;
+            /* 设置边框属性：边框宽度、样式、颜色 */
+            border-right: none;
+            /* 去掉右边框 */
+            padding-left: 10px;
+            /* 设置左内边距 */
+            color: #0000007e;
+            /* 设置字体颜色 */
+            font-size: 15px;
+            /* 设置字体大小 */
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            /* 设置字体样式 */
+        }
+
+        .container .search button {
+            float: left;
+            /* 设置left浮动 */
+            width: 150px;
+            height: 52px;
+            background-color: #4e6ef2;
+            /* 设置button颜色 */
+            color: #FFF;
+            /* 设置button字体颜色 */
+            font-size: 19px;
+            /* 设置字体大小 */
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            /* 设置字体样式 */
+        }
+
+        .container .result {
+            width: 100%;
+
+        }
+
+        .container .result .item {
+            margin-top: 15px;
+            /* 设置外上边距 */
+        }
+
+        .container .result .item a {
+            display: block;
+            /*设置a为块级元素，单独一行*/
+            text-decoration: none;
+            /* 去掉a标签下划线 */
+            font-size: 20px;
+            /* 设置a标签字体大小 */
+            color: #4e6ef2;
+
+        }
+
+        .container .result .item a:hover {
+            text-decoration: underline;
+            /*设置鼠标放在a上的动态效果*/
+        }
+
+        .container .result .item p {
+            font-size: 16px;
+            /* 设置a标签字体大小 */
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            /* 设置字体样式 */
+            margin-top: 5px;
+            /*设置外上边距*/
+        }
+
+        .container .result .item i {
+            font-style: normal;
+            /* 取消斜体风格 */
+            color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="search">
+            <input type="text" value="输入搜索关键字..">
+            <button onclick="Search()">搜索一下</button>
+        </div>
+        <div class="result">
+            <!-- 动态生成网页 -->
+        </div>
+    </div>
+    <script>
+        function Search() {
+            //1.提取数据,$理解成JQuery的别称
+            let query = $(".container .search input").val();
+            console.log("query= " + query);//console是浏览器的对话框，可以用来进行查看
+
+            //2.发起http请求,ajax:前后端数据交互的函数，属于JQuery中的
+            $.ajax({
+                type: "GET",
+                url: "/s?word=" + query,
+                success: function (data) {
+                    console.log(data);
+                    BulidHtml(data);
+                }
+            })
+        }
+
+        function BulidHtml(data) {
+            let result_lable = $(".container .result");// 获取html中result标签
+            result_lable.empty();//清空历史记录
+
+            for (let elem of data) {
+                let a_lable = $("<a>", {
+                    text: elem.title,
+                    href: elem.url,
+                    target: "_blank"//跳转到新的页面
+                });
+
+                let p_lable = $("<p>", {
+                    text: elem.desc
+                });
+
+                let i_lable = $("<i>", {
+                    text: elem.url
+                });
+                let div_lable = $("<div>", {
+                    class: "item"
+                });
+                a_lable.appendTo(div_lable);
+                p_lable.appendTo(div_lable);
+                i_lable.appendTo(div_lable);
+                div_lable.appendTo(result_lable);
+            }
+        }
+    </script>
+</body>
+
+</html>
