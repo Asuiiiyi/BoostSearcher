@@ -1,1 +1,0 @@
-/opt/rh/devtoolset-7/root/usr/bin/c++     CMakeFiles/HttpServer.dir/src/http_server.cc.o  -o ../bin/HttpServer  -ljsoncpp -lhiredis ../redis-plus-plus/build/libredis++.a -lpthread 
