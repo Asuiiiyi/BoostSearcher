@@ -1,0 +1,4 @@
+/home/asuiiiyi/Repository/BoostSearcher/build/CMakeFiles/edit_cache.dir
+/home/asuiiiyi/Repository/BoostSearcher/build/CMakeFiles/rebuild_cache.dir
+/home/asuiiiyi/Repository/BoostSearcher/build/CMakeFiles/HttpServer.dir
+/home/asuiiiyi/Repository/BoostSearcher/build/CMakeFiles/Parser.dir
